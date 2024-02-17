@@ -100,7 +100,7 @@ class Scraper:
             
             df["Sem."]="-"
         
-        return df[["Competicion", "Ronda", "Sem.", "Hora", "Local", "Marcador", "Visitante", "Asistencia", "Sedes"]]
+        return df[["Competicion", "Ronda", "Hora", "Local", "Marcador", "Visitante", "Asistencia", "Sedes"]]
 
     def __obtenerDataLimpia(self, tablas:List[bs4])->Optional[pd.DataFrame]:
 

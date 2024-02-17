@@ -1,5 +1,3 @@
-from src.extraer import extraerData
+from src.etl import ETL
 
-data=extraerData("2019-06-22")
-
-print(data)
+ETL("2019-06-22")

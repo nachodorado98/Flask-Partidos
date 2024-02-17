@@ -2,9 +2,14 @@ import pytest
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup as bs4
 import pandas as pd
+import time
 
 from src.scraper import Scraper
 from src.excepciones import ErrorFechaFormato, ErrorFechaPosterior, PaginaError, PartidosExtraidosError
+
+def test_pausa():
+
+	time.sleep(60)
 
 @pytest.mark.parametrize(["fecha"],
 	[("201906-22",), ("22/06/2019",), ("22062019",), ("2019-0622",), ("2019-06/22",)]

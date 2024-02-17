@@ -9,3 +9,6 @@ class PaginaError(Exception):
 
 class PartidosExtraidosError(Exception):
     pass
+
+class PartidosLimpiarError(Exception):
+    pass
