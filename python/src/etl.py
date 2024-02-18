@@ -4,7 +4,8 @@ import pandas as pd
 
 from .scraper import Scraper
 from .config import COMPETICIONES
-from .excepciones import PartidosLimpiarError, ErrorFechaFormato, ErrorFechaPosterior, PaginaError, PartidosExtraidosError
+from .excepciones import ErrorFechaFormato, ErrorFechaPosterior, PaginaError, PartidosExtraidosError, PartidosLimpiarError
+from .database.conexion import Conexion
 
 def extraerData(fecha:str)->pd.DataFrame:
 
@@ -42,6 +43,16 @@ def limpiarData(tabla:pd.DataFrame)->pd.DataFrame:
 
 	return tabla_filtrada.reset_index(drop=True)
 
+def cargarData(tabla:pd.DataFrame)->None:
+
+	con=Conexion()
+
+	partidos=tabla.values.tolist()
+
+	con.insertarPartidos(partidos)
+
+	con.cerrarConexion()
+
 def ETL(fecha:str)->None:
 
 	try:
@@ -50,8 +61,24 @@ def ETL(fecha:str)->None:
 
 		data_limpia=limpiarData(data)
 
-		print(data_limpia)
+		cargarData(data_limpia)
 
-	except Exception as e:
+	except ErrorFechaFormato as e:
+
+		print(e)
+
+	except ErrorFechaPosterior as e:
+
+		print(e)
+
+	except PaginaError as e:
+
+		print(e)
+
+	except PartidosExtraidosError as e:
+
+		print(e)
+
+	except PartidosLimpiarError as e:
 
 		print(e)

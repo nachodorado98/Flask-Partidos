@@ -99,8 +99,10 @@ class Scraper:
         if "Sem." not in list(df.columns):
             
             df["Sem."]="-"
+
+        df["Fecha"]=self.fecha
         
-        return df[["Competicion", "Ronda", "Hora", "Local", "Marcador", "Visitante", "Asistencia", "Sedes"]]
+        return df[["Competicion", "Ronda", "Fecha", "Hora", "Local", "Marcador", "Visitante", "Asistencia", "Sedes"]]
 
     def __obtenerDataLimpia(self, tablas:List[bs4])->Optional[pd.DataFrame]:
 
