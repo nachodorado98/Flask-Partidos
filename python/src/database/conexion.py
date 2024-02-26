@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from typing import List
+from typing import List, Optional
 
 from .confconexion import *
 
@@ -45,3 +45,21 @@ class Conexion:
 		for partido in partidos:
 
 			self.insertarPartido(partido)
+
+	# Metodo para saber si la tabla esta vacia
+	def tabla_vacia(self)->bool:
+
+		self.c.execute("""SELECT *
+							FROM partidos""")
+
+		return True if not self.c.fetchall() else False
+
+	# Metodo para obtener la fecha maxima de la tabla
+	def fecha_maxima(self)->Optional[str]:
+
+		self.c.execute("""SELECT MAX(fecha) as fecha_maxima
+							FROM partidos""")
+
+		fecha_maxima=self.c.fetchone()["fecha_maxima"]
+
+		return None if fecha_maxima is None else fecha_maxima.strftime("%Y-%m-%d")

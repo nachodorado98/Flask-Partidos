@@ -13,12 +13,15 @@ def scraper():
 	return Scraper("2019-06-22")
 
 @pytest.fixture
-def conexion():
+def conexion_basica():
 
-	con=Conexion()
+	yield Conexion()
 
-	con.c.execute("DELETE FROM partidos")
+@pytest.fixture
+def conexion(conexion_basica):
 
-	con.confirmar()
+	conexion_basica.c.execute("DELETE FROM partidos")
 
-	return con
+	conexion_basica.confirmar()
+
+	return conexion_basica

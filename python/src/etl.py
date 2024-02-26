@@ -1,11 +1,13 @@
 import pandas as pd
 #pd.set_option('display.max_columns', None)
 #pd.set_option('display.max_rows', None)
+import time
 
 from .scraper import Scraper
 from .config import COMPETICIONES
 from .excepciones import ErrorFechaFormato, ErrorFechaPosterior, PaginaError, PartidosExtraidosError, PartidosLimpiarError
 from .database.conexion import Conexion
+from .utils import fechas_etl
 
 def extraerData(fecha:str)->pd.DataFrame:
 
@@ -82,3 +84,25 @@ def ETL(fecha:str)->None:
 	except PartidosLimpiarError as e:
 
 		print(e)
+
+def realizarETL()->None:
+
+	fechas=fechas_etl()
+
+	if fechas:
+
+		print(f"ETL desde {fechas[0]} hasta {fechas[-1]}")
+
+		for fecha in fechas:
+
+			print(f"Realizando ETL {fecha}")
+
+			ETL(fecha)
+
+			time.sleep(2)
+
+		print("ETL completado con exito")
+
+	else:
+
+		print("Datos actualizados")

@@ -1,14 +1,12 @@
 import time
 
-from src.etl import ETL
+from src.etl import realizarETL
 
 def pipeline()->None:
 
 	try:
 
-		ETL("2019-06-22")
-
-		print("ETL completado con exito")
+		realizarETL()
 
 		#time.sleep(300)
 
