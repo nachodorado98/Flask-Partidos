@@ -248,5 +248,14 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  web:
+    build: ./web
+    ports:
+     - 5000:5000
+    volumes:
+     - ./web:/app
+    depends_on:
+      <<: *airflow-common-depends-on
+
 volumes:
   postgres-db-volume:
