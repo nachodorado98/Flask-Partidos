@@ -1,14 +1,12 @@
 import time
 
-from src.etl import realizarETL
+from .etl import realizarETL
 
 def pipeline()->None:
 
 	try:
 
 		realizarETL()
-
-		#time.sleep(300)
 
 	except AttributeError as e:
 
@@ -19,5 +17,3 @@ def pipeline()->None:
 		time.sleep(5)
 
 		pipeline()
-
-pipeline()
