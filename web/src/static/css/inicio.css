@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffeded;
+}
+
+.contenido-principal {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 1500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenido-principal h1 {
+    font-size: 40px;
+    color: #e74c3c;
+}
+
+#toggle-navbar {
+    float: right;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.navbar {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    background-color: #c0392b;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    margin-bottom: 10px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #e74c3c;
+}
+
+.contenedor-tabla {
+    overflow-y: auto;
+    max-height: 500px;
+    border-radius: 10px;
+}
+
+.tabla-partidos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabla-partidos th,
+.tabla-partidos td {
+    border: 1px solid #e74c3c;
+    padding: 12px;
+    text-align: center;
+}
+
+.tabla-partidos th {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.tabla-partidos td {
+    background-color: #f9eaea;
+    color: #333;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+}
+
+.tabla-partidos tr:hover td {
+    background-color: #f5b7b1;
+}
+
+.btn-no-partidos{
+    font-size: 30px;    
+}
+
+.contenedor-botones {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.boton-anterior,
+.boton-siguiente {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-anterior:hover,
+.boton-siguiente:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #963232;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
