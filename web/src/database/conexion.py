@@ -58,3 +58,21 @@ class Conexion:
 											partido["visitante"],
 											partido["publico"],
 											partido["sede"]), partidos)) if partidos else None
+
+	# Metodo para saber si la tabla esta vacia
+	def tabla_vacia(self)->bool:
+
+		self.c.execute("""SELECT *
+						FROM partidos""")
+
+		return True if not self.c.fetchall() else False
+
+	# Metodo para obtener la fecha minima de la tabla
+	def fecha_minima(self)->Optional[str]:
+
+		self.c.execute("""SELECT MIN(fecha) as fecha_minima
+							FROM partidos""")
+
+		fecha_minima=self.c.fetchone()["fecha_minima"]
+
+		return None if fecha_minima is None else fecha_minima.strftime("%Y-%m-%d")

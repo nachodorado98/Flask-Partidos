@@ -45,3 +45,13 @@ def fecha_bonita(fecha:str)->str:
     nombre_mes=meses[fecha_datetime.month]
 
     return f"{dia_semana} {fecha_datetime.day} de {nombre_mes} de {fecha_datetime.year}"
+
+# Funcion para comprobar si es maxima la fecha
+def es_maxima(fecha:str, fecha_maxima:str)->bool:
+
+	return True if fecha==fecha_maxima else False
+
+# Funcion para comprobar si es minima la fecha
+def es_minima(fecha:str, fecha_minima:str)->bool:
+
+	return True if fecha==fecha_minima else False

@@ -55,3 +55,22 @@ def test_pagina_inicial_fecha_maxima(cliente, conexion):
 
 	respuesta.status_code==200
 	assert "Partidos Del "+fecha_bonita(fecha_maxima) in contenido
+	assert 'class="boton-anterior"' in contenido
+	assert 'class="boton-anterior boton-anterior-deshabilitado"' not in contenido
+	assert 'class="boton-siguiente"' not in contenido
+	assert 'class="boton-siguiente boton-siguiente-deshabilitado"' in contenido
+
+def test_pagina_inicial_fecha_minima(cliente, conexion):
+
+	fecha_minima=conexion.fecha_minima()
+
+	respuesta=cliente.get(f"/?fecha={fecha_minima}")
+
+	contenido=respuesta.data.decode()
+
+	respuesta.status_code==200
+	assert "Partidos Del "+fecha_bonita(fecha_minima) in contenido
+	assert 'class="boton-anterior"' not in contenido
+	assert 'class="boton-anterior boton-anterior-deshabilitado"' in contenido
+	assert 'class="boton-siguiente"' in contenido
+	assert 'class="boton-siguiente boton-siguiente-deshabilitado"' not in contenido
